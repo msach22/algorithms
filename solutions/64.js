@@ -2,7 +2,8 @@
 // reverse word order in a sentence
 // Input: "I am the king"
 // Output: "king the am I"
-/*
+
+/**
 * @param {string} sentence - a sentence
 * @returns {string} result - reveresed word order
 */
@@ -14,24 +15,26 @@ const reverseInput = (string) => {
   };
   return newString;
 }
+
+/**
+* @param {string} sentence - a sentence
+* @returns {string} result - reveresed word order
+*/
+
 const solution = (sentence) => {
   if (sentence.length < 2) {
-    return "Incorrect Data Format";
+    return sentence;
   }
-  let newString = reverseInput(sentence);
   let subString = '';
   let result = [];
-  for (let j = 0; j < newString.length; j++) {
-    if (newString[j] === ' ' ) {
+  for (let j = sentence.length - 1; j >= -1; j--) {
+    if (sentence[j] === ' ' || j === -1) {
       result.push(reverseInput(subString));
       subString = '';
-    } else if (j === newString.length - 1) {
-        subString += newString[j];
-        result.push(reverseInput(subString));
     } else {
-        subString += newString[j];
+        subString += sentence[j];
     }
-}
+  }
 return result.join(' ');
 };
 
